@@ -44,10 +44,11 @@ jobs:
         run: |
           docker run --rm --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:13
       - name: Test with pytest
+        env:
+          DB_NAME: postgres
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+          DB_HOST: localhost
+          DB_PORT: 5432
         run: |
-          export DB_NAME=postgres
-          export DB_USER=postgres
-          export DB_PASSWORD=postgres
-          export DB_HOST=localhost
-          export DB_PORT=5432
           pytest --cov=backend
