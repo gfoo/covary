@@ -8,12 +8,33 @@ on:
   pull_request:
     branches:
       - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: components/backend
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        # Add some health options to make sure PostgreSQL is running fully before moving on
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -42,12 +63,13 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         env:
-          DB_NAME: postgres
-          DB_USER: postgres
-          DB_PASSWORD: postgres
+          # env for Django
+          DB_NAME: ${POSTGRES_DB}
+          DB_USER: ${POSTGRES_USER}
+          DB_PASSWORD: ${POSTGRES_PASSWORD}
           DB_HOST: 127.0.0.1
           DB_PORT: 5432
         run: |
-          docker run --rm --name postgres -e POSTGRES_PASSWORD=${DB_PASSWORD} -p 5432:5432 -d postgres:13
-          docker run --rm -e TARGETS=${DB_HOST}:${DB_PORT} -e TIMEOUT=600 --net=host  waisbrot/wait
+          #docker run --rm --name postgres -e POSTGRES_PASSWORD=${DB_PASSWORD} -p 5432:5432 -d postgres:13
+          #docker run --rm -e TARGETS=${DB_HOST}:${DB_PORT} -e TIMEOUT=600 --net=host  waisbrot/wait
           pytest --cov=backend
