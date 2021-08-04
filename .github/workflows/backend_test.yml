@@ -64,10 +64,10 @@ jobs:
       - name: Test with pytest
         env:
           # env for Django
-          DB_NAME: ${POSTGRES_DB}
-          DB_USER: ${POSTGRES_USER}
-          DB_PASSWORD: ${POSTGRES_PASSWORD}
-          DB_HOST: 127.0.0.1
+          DB_NAME: postgres
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+          DB_HOST: localhost
           DB_PORT: 5432
         run: |
           #docker run --rm --name postgres -e POSTGRES_PASSWORD=${DB_PASSWORD} -p 5432:5432 -d postgres:13
