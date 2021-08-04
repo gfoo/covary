@@ -38,5 +38,6 @@ Open http://localhost:8000/admin/
 ## Create and run local container for test with local db
 
 $ docker build . -t gfoo/covary-backend
+# for debug add -e DEBUG=1
 $ docker run --net=host -e DB_HOST=127.0.0.1 -e DB_PORT=5432 -e DB_NAME=postgres -e DB_USER=postgres -e DB_PASSWORD=postgres -e DJANGO_ALLOWED_HOSTS=* -it gfoo/covary-backend
 
