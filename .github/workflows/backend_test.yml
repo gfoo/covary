@@ -80,9 +80,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: build
-    defaults:
-      run:
-        working-directory: components/backend
 
     steps:
       - name: Check out the repo
@@ -107,6 +104,6 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: components/backend/.
           push: true
           tags: ${{ steps.meta.outputs.tags }}
