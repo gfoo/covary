@@ -6,9 +6,4 @@ while ! nc -z $DB_HOST $DB_PORT; do
 done
 echo "Backend: PostgreSQL started"
 
-# deploy static files
-python manage.py collectstatic --noinput
-# always apply migration
-python manage.py migrate
-# then laucnh command
 exec "$@"
