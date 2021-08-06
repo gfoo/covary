@@ -12,6 +12,9 @@ Welcome to covary's documentation!
 
    introduction.rst
    architecture.rst
+   deploy.rst
+   components.rst
+   documentation.rst
 
 Indices and tables
 ==================

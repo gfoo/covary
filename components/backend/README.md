@@ -1,7 +1,4 @@
-# Local devs
-
-
-## Prepare Python env (first time)
+### Prepare Python env (first time)
 
 ```
 python3 -m venv venv
@@ -9,7 +6,7 @@ source ./venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Required configs with a local Postgresql server
+### Required configs with a local Postgresql server
 
 Prepare a `.env` file:
 
@@ -23,7 +20,7 @@ export DJANGO_ALLOWED_HOSTS=*
 export DEBUG=1
 ```
 
-## Launch dev env
+### Launch dev env
 
 ```
 source ./venv/bin/activate
@@ -45,7 +42,7 @@ Each time:
 
 Open http://localhost:8000/admin/
 
-## Create and run local container for test with local db
+### Create and run local container for test with local db
 
 ```
 docker build . -t gfoo/covary-backend:local-dev

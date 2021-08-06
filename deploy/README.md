@@ -1,6 +1,4 @@
-# Stack deploy
-
-## Required configs
+### Required configs
 
 Prepare a `.env` file:
 
@@ -18,7 +16,9 @@ POSTGRES_PASSWORD=postgres
 BACKEND_VERSION=v1.1
 DJANGO_SUPERUSER_PASSWORD=admin
 ```
-## Launch stack
+### Launch stack
+
+#### Init
 
 ```
 docker-compose up -d
@@ -29,7 +29,7 @@ docker-compose exec backend python manage.py createsuperuser --noinput --usernam
 
 Open http://localhost:8081/admin/
 
-# update container service
+#### Update container service
 
 ```
 docker-compose stop backend
