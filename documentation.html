@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Introduction &mdash; covary  documentation</title>
+  <title>Documentation &mdash; covary  documentation</title>
   
 
   
@@ -41,8 +41,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Architecture" href="architecture.html" />
-    <link rel="prev" title="Welcome to covary’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Components" href="components.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,11 +88,15 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-python-env-first-time">Prepare Python env (first time)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-doc">Generate doc</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -142,13 +145,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Introduction</li>
+      <li>Documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/documentation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -161,11 +164,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>The aim of Corpus Variation History project is to provide services allowing to study the variation of the content of a text corpus over time.</p>
-<p>A corpus is modified over time in different ways by: adding text, removing text, modifying existing text content.</p>
-<p>Corpus analyzers allow to compute metrics representing a corpus at a certain point in time.</p>
+  <div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prepare-python-env-first-time">
+<h2>Prepare Python env (first time)<a class="headerlink" href="#prepare-python-env-first-time" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+<span class="n">source</span> <span class="o">./</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generate-doc">
+<h2>Generate doc<a class="headerlink" href="#generate-doc" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">./</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>Open in browser build/html/index.html</p>
+<p>The doc pushed on main branch is automaticqlly pushed to <a class="reference external" href="https://gfoo.github.io/covary/index.html">GitHub Pages of the project</a></p>
+</div>
 </div>
 
 
@@ -174,8 +191,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="architecture.html" class="btn btn-neutral float-right" title="Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to covary’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="components.html" class="btn btn-neutral float-left" title="Components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

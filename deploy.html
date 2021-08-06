@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Deploy &mdash; covary  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Components" href="components.html" />
+    <link rel="prev" title="Architecture" href="architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> covary
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deploy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#required-configs">Required configs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#launch-stack">Launch stack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#init">Init</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-container-service">Update container service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">covary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Deploy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/deploy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="deploy">
+<h1>Deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="required-configs">
+<h2>Required configs<a class="headerlink" href="#required-configs" title="Permalink to this headline">¶</a></h2>
+<p>Prepare a <code class="docutils literal notranslate"><span class="pre">.env</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#DEBUG=1</span>
+<span class="n">SECRET_KEY</span><span class="o">=</span><span class="n">foo</span>
+<span class="n">DJANGO_ALLOWED_HOSTS</span><span class="o">=</span><span class="n">localhost</span> <span class="mf">127.0.0.1</span> <span class="p">[::</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">DJANGO_DEPLOY_PORT</span><span class="o">=</span><span class="mi">8081</span>
+<span class="n">DB_NAME</span><span class="o">=</span><span class="n">postgres</span>
+<span class="n">DB_USER</span><span class="o">=</span><span class="n">postgres</span>
+<span class="n">DB_PASSWORD</span><span class="o">=</span><span class="n">postgres</span>
+<span class="n">DB_HOST</span><span class="o">=</span><span class="n">db</span>
+<span class="n">DB_PORT</span><span class="o">=</span><span class="mi">5432</span>
+<span class="n">POSTGRES_PASSWORD</span><span class="o">=</span><span class="n">postgres</span>
+<span class="n">BACKEND_VERSION</span><span class="o">=</span><span class="n">v1</span><span class="mf">.1</span>
+<span class="n">DJANGO_SUPERUSER_PASSWORD</span><span class="o">=</span><span class="n">admin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="launch-stack">
+<h2>Launch stack<a class="headerlink" href="#launch-stack" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="init">
+<h3>Init<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">exec</span> <span class="n">backend</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">collectstatic</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="nb">input</span> <span class="o">--</span><span class="n">clear</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">exec</span> <span class="n">backend</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span> <span class="o">--</span><span class="n">noinput</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">exec</span> <span class="n">backend</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span> <span class="o">--</span><span class="n">noinput</span> <span class="o">--</span><span class="n">username</span> <span class="n">admin</span> <span class="o">--</span><span class="n">email</span> <span class="n">admin</span><span class="nd">@covary</span><span class="o">.</span><span class="n">org</span>
+</pre></div>
+</div>
+<p>Open <a class="reference external" href="http://localhost:8081/admin/">http://localhost:8081/admin/</a></p>
+</div>
+<div class="section" id="update-container-service">
+<h3>Update container service<a class="headerlink" href="#update-container-service" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">stop</span> <span class="n">backend</span>
+</pre></div>
+</div>
+<p>Update BACKEND_VERSION in <code class="docutils literal notranslate"><span class="pre">.env</span></code> file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span> <span class="n">backend</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="components.html" class="btn btn-neutral float-right" title="Components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="architecture.html" class="btn btn-neutral float-left" title="Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Gilles Faucherand.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
