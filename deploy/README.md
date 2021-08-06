@@ -14,7 +14,7 @@ DB_PASSWORD=postgres
 DB_HOST=db
 DB_PORT=5432
 POSTGRES_PASSWORD=postgres
-BACKEND_VERSION=v1.0
+BACKEND_VERSION=v1.1
 DJANGO_SUPERUSER_PASSWORD=admin
 ```
 ## Launch stack
@@ -26,7 +26,16 @@ docker-compose exec backend python manage.py migrate --noinput
 docker-compose exec backend python manage.py createsuperuser --noinput --username admin --email admin@covary.org
 ```
 
-
 Open http://localhost:8000/admin/
 
+# update container service
 
+```
+docker-compose stop backend
+```
+
+Update BACKEND_VERSION in `.env` file
+
+```
+docker-compose up -d backend
+```
