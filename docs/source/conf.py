@@ -29,7 +29,10 @@ author = 'Gilles Faucherand'
 # ones.
 extensions = [
     'sphinx.ext.githubpages',
+    'm2r2',  # for Markdown files
 ]
+
+source_suffix = ['.rst', '.md']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
