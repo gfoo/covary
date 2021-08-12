@@ -36,6 +36,7 @@ First time:
 
 Each time:
 ```
+source .env
 ./manage runserver
 ```
 
