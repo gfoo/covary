@@ -29,7 +29,11 @@ docker-compose exec backend python manage.py createsuperuser --noinput --usernam
 
 Open http://localhost:8081/admin/
 
-#### Update container service
+Rabbit monitoring ?
+Redis monitoring ?
+Celery monitoring ?
+
+#### Update backend container service
 
 ```
 docker-compose stop backend
