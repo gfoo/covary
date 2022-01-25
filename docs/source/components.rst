@@ -10,5 +10,5 @@ Backend devs
 ++++++++++++
 
 
-.. mdinclude:: ../../components/backend/README.md
+.. mdinclude:: ../../backend/README.md
  
